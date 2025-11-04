@@ -2,6 +2,7 @@
 import { useState } from "react";
 import {
   Typography,
+  Drawer,
   Button,
   IconButton,
   Menu,
@@ -27,6 +28,19 @@ export default function Nav() {
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
   const [anchorEl, setAnchorEl] = useState(null);
+
+  const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
+
+  const toggleMobileDrawer = (open) => (event) => {
+    if (
+      event.type == "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
+      return;
+    }
+
+    setMobileDrawerOpen(open);
+  };
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -78,7 +92,6 @@ export default function Nav() {
       >
         Pages
       </Button>
-      {console.log(anchorEl)}
       <Menu anchorEl={anchorEl} onClose={handleClose} open={Boolean(anchorEl)}>
         <MenuItem onClose={handleClose}>
           <Link href="/about">About</Link>
@@ -128,7 +141,13 @@ export default function Nav() {
         >
           {isSmallScreen && (
             <IconButton>
-              <MenuIcon />
+              <MenuIcon
+                onClick={toggleMobileDrawer(true)}
+                sx={{
+                  color: "black",
+                  zIndex: 100000,
+                }}
+              />
             </IconButton>
           )}
 
@@ -227,6 +246,42 @@ export default function Nav() {
 
         <Box></Box>
       </Box>
+      <Drawer
+        anchor="left"
+        open={mobileDrawerOpen}
+        onClose={toggleMobileDrawer(false)}
+      >
+        <Box
+          sx={{ width: 250 }}
+          role="presentation"
+          onClick={toggleMobileDrawer(false)}
+          onKeyDown={toggleMobileDrawer(false)}
+        >
+          <List>
+            <ListItemText>
+              <Link href="/">Home</Link>
+            </ListItemText>
+          </List>
+
+          <List>
+            <ListItemText>
+              <Link href="/about">About</Link>
+            </ListItemText>
+          </List>
+
+          <List>
+            <ListItemText>
+              <Link href="/contact">Contact</Link>
+            </ListItemText>
+          </List>
+
+          <List>
+            <ListItemText>
+              <Link href="/">Test</Link>
+            </ListItemText>
+          </List>
+        </Box>
+      </Drawer>
     </Box>
   );
 }
