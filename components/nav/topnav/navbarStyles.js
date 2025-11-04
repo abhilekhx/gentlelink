@@ -11,8 +11,8 @@ import {
 export const styles = {
   navbarContainer: {
     width: "100%",
-    backgroundColor: "#b1bdbb",
-    color: "white",
+    backgroundColor: "#83908eff",
+    color: "#033",
     height: "auto",
     padding: { xs: "12px 0", md: "0" },
   },
@@ -39,10 +39,10 @@ export const styles = {
     gap: "8px",
   },
   iconButton: {
-    color: "white",
-    backgroundColor: "#b1bdbb",
+    color: "#033",
+    backgroundColor: "#83908eff",
     "&:hover": {
-      backgroundColor: "#a1adad",
+      backgroundColor: "#b1bdbb",
     },
     padding: "8px",
   },

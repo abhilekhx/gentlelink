@@ -13,7 +13,7 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import PhoneInTalkIcon from "@mui/icons-material/PhoneInTalk";
 import Email from "@mui/icons-material/Email";
 
-export default function NavBar() {
+export default function TopNav() {
   return (
     <Box component="nav" sx={styles.navbarContainer}>
       <Box sx={styles.contentWrapper}>
@@ -23,7 +23,7 @@ export default function NavBar() {
               <PhoneInTalkIcon />
             </IconButton>
             <Typography variant="body2" sx={styles.contactText}>
-              +1234567890
+              +1 (603)858-6453
             </Typography>
           </Box>
 
@@ -32,7 +32,7 @@ export default function NavBar() {
               <Email />
             </IconButton>
             <Typography variant="body2" sx={styles.contactText}>
-              email@gmail.com
+              contactus@gentlelink.com
             </Typography>
           </Box>
         </Box>
